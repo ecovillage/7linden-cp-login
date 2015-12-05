@@ -1,0 +1,55 @@
+#!/bin/bash
+# Copyright 2015 Felix Wolfsteller
+# Released under the GPL
+
+# Post login data from /etc/7linden/cp-login.conf to pfSense Captive Portal.
+
+set -e
+
+readonly CP_HOST="192.168.0.1"
+
+am_at_home() {
+  # Compare ssh keys from HOST against keys distributed with package.
+  KEYS_DIFFER=`/usr/bin/ssh-keyscan -T1 "$CP_HOST" 2> /dev/null | sort | diff /opt/7linden-cp-login/data/host_keys -`
+  return $KEYS_DIFFER
+}
+
+typeset -A config
+get_config_values() {
+  # Init array with default values
+  config=(
+      [username]="user"
+      [password]="password"
+      [hostname]="192.168.0.1:8002"
+      [interval]="60"
+  )
+  
+  # Read /etc/7linden/cp-login.conf
+  while read line
+  do
+      if echo $line | grep -F = &>/dev/null
+      then
+          varname=$(echo "$line" | cut -d '=' -f 1)
+          config[$varname]=$(echo "$line" | cut -d '=' -f 2-)
+      fi
+  done < /etc/7linden/cp-login.conf
+}
+
+# Post login data to CP, config given as argument
+post_login() {
+  wget --post-data "auth_user=${config[username]}&auth_pass=${config[password]}&accept=Login" ${config[hostname]}
+}
+
+
+main() {
+  if am_at_home; then
+    # Post login info
+    get_config_values
+    post_login
+  else
+    #  ; # Nothing to do
+    echo "Not at home"
+  fi
+}
+
+main
