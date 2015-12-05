@@ -6,11 +6,11 @@ Create a .deb package (suitable for *buntu, Debian, Linux Mint.
 
 ## /opt/7linden-cp-login/bin/post_login
 
-Script checks whether we are at home (by asking for routes ssh key fingerprints and compares them with /opt/7linden-cp-login/data/host_keys).
+Script checks whether we are at home (by asking for routers ssh key fingerprints and comparing them with `/opt/7linden-cp-login/data/host_keys`).
 
-It then reads the config from /etc/7linden/cp-login.conf and posts this data to the given host (pfSense Captive Portal assumed).
+It then reads the config (notably *username*, *password* and *hostname*) from `/etc/7linden/cp-login.conf` and posts this data to the given host (pfSense Captive Portal assumed).
 
-Note that the script should have no file-ending such that it can be linked in /etc/network/if-up.d/ and thus be called at bootup time with `ifup -a`.
+Note that the script should have no file-ending such that it can be linked in `/etc/network/if-up.d/` and thus be called at bootup time with `ifup -a`.
 
 ## Package building
 
