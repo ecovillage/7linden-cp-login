@@ -12,6 +12,9 @@ It then reads the config (notably *username*, *password* and *hostname*) from `/
 
 Note that the script should have no file-ending such that it can be linked in `/etc/network/if-up.d/` and thus be called at bootup time with `ifup -a`.
 
+This can be done with `sudo ln -s /etc/network/if-up.d/post-login /opt/7linden-cp-login/bin/post-login`.
+This is also wrapped in two scripts.
+
 ### Package building
 
 To build the package you need to have [FPM](https://github.com/jordansissel/fpm) in the path and execute `create.sh`.

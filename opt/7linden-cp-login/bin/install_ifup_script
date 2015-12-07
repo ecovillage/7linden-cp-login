@@ -1,0 +1,6 @@
+#!/bin/bash
+# Copyright 2015 Felix Wolfsteller
+# Released under the GPL
+
+# Create a link in /etc/network/if-up.d
+ln -s /opt/7linden-cp-login/bin/post_login /etc/network/if-up.d/
