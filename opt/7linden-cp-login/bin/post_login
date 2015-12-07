@@ -9,9 +9,7 @@ set -e
 readonly CP_HOST="192.168.0.1"
 
 am_at_home() {
-  # Compare ssh keys from HOST against keys distributed with package.
-  KEYS_DIFFER=`/usr/bin/ssh-keyscan -T1 "$CP_HOST" 2> /dev/null | sort | diff /opt/7linden-cp-login/data/host_keys -`
-  return $KEYS_DIFFER
+  /usr/bin/ssh-keyscan -T1 "$CP_HOST" 2> /dev/null | sort | diff /opt/7linden-cp-login/data/host_keys -
 }
 
 typeset -A config
