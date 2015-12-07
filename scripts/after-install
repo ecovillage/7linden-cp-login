@@ -1,0 +1,6 @@
+#!/bin/bash
+# Copyright 2015 Felix Wolfsteller
+# Released under the GPL
+
+# Set permissions of config file
+chmod 600 /etc/7linden/cp-login.conf

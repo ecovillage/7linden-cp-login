@@ -18,5 +18,6 @@ fpm -s dir\
     --depends diffutils\
     --license "GPLv3"\
     --maintainer "felix.wolfsteller@gmail.com"\
+    --after-install scripts/after-install\
     etc opt
 # --after-install --after-remove
