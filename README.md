@@ -1,6 +1,6 @@
 # 7linden-cp-login
 
-Create a .deb package suitable for *buntu, Debian, Linux Mint.
+Create a .deb package suitable for \*buntu, Debian, Linux Mint.
 
 ## Scripts to login to captive portal (pfsense).
 
