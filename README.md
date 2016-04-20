@@ -13,7 +13,15 @@ It then reads the config (notably *username*, *password* and *hostname*) from `/
 Note that the script should have no file-ending such that it can be linked in `/etc/network/if-up.d/` and thus be called at bootup time with `ifup -a`.
 
 This can be done with `sudo ln -s /etc/network/if-up.d/post-login /opt/7linden-cp-login/bin/post-login`.
-This is also wrapped in two scripts.
+This is also wrapped in two scripts:
+
+  /opt/7linden-cp-login/bin/install_ifup_script
+
+and
+
+  /opt/7linden-cp-login/bin/uninstall_ifup_script
+
+which do just that.
 
 ### Package building
 
@@ -34,5 +42,3 @@ You are welcome, drop me a line and issue a Pull Request.
  * be more defensive
  * be more defensive, 2: escaping
  * set proper timeouts for the wget-call
- * set up proper permissions on the given files
- * Automatically create a link in if-up.d?

@@ -11,6 +11,7 @@ fpm -s dir\
     --name "7linden-cp-login"\
     --description "Manually login to captive portal"\
     --directories opt/7linden-cp-login\
+    --depends 7linden-at-home\
     --depends bash\
     --depends wget\
     --depends whiptail\
