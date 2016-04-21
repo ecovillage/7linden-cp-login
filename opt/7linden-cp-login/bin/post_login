@@ -35,7 +35,7 @@ get_config_values() {
 
 # Post login data to CP, config given as argument
 post_login() {
-  wget -t 1 --timeout 1 --post-data "auth_user=${config[username]}&auth_pass=${config[password]}&accept=Login" ${config[hostname]}
+  wget -t 1 --timeout 1 --post-data "auth_user=${config[username]}&auth_pass=${config[password]}&accept=Login" ${config[hostname]} > /dev/null
 }
 
 
