@@ -1,6 +1,6 @@
 #!/bin/bash
-# Copyright 2015 Felix Wolfsteller
-# Released under the GPL
+# Copyright 2015, 2016 Felix Wolfsteller
+# Released under the GPLv3+
 
 # Post login data from /etc/7linden/cp-login.conf to pfSense Captive Portal.
 

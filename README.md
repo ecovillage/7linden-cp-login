@@ -27,11 +27,23 @@ which do just that.
 
 To build the package you need to have [FPM](https://github.com/jordansissel/fpm) in the path and execute `create.sh`.
 
+### Package release
+
+To ease integration with other tools, a version bump should be tagged with the current version number.
+As the packages version is inferred by `create.sh` from the `VERSION` file, this is the recommended behaviour:
+
+  - Improve code.
+  - Raise `VERSION` (mind semantic versioning).
+  - Commit, tag and push the stuff:
+    git add VERSION; git commit -m "raise VERSION to `cat VERSION`"
+    git tag -a "`cat VERSION`" -m "`cat VERSION`"
+    git push && git push --tags
+
 ### License
 
-Copyright 2015, Felix Wolfsteller.
+Copyright 2015, 2016 Felix Wolfsteller.
 
-Released under the [GPLv3](LICENSE) included as LICENSE file.
+Released under the [GPLv3](LICENSE) (or any later version) as included as LICENSE file.
 
 ### Contribute
 
