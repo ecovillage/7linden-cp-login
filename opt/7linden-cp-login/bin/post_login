@@ -1,6 +1,6 @@
 #!/bin/bash
-# Copyright 2015 Felix Wolfsteller
-# Released under the GPL
+# Copyright 2015, 2016 Felix Wolfsteller
+# Released under the GPLv3+
 
 # Post login data from /etc/7linden/cp-login.conf to pfSense Captive Portal.
 
@@ -9,7 +9,11 @@ set -e
 readonly CP_HOST="192.168.0.1"
 
 am_at_home() {
-  /usr/bin/ssh-keyscan -T1 "$CP_HOST" 2> /dev/null | sort | diff /opt/7linden-cp-login/data/host_keys -
+  if [ $(grep "^search" /etc/resolv.conf | cut -d ' ' -f2) = "7l" ] 2>/dev/null; then
+    return 0
+  else
+    return $(/opt/7linden-at-home/bin/7linden-at-home)
+  fi
 }
 
 typeset -A config
