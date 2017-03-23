@@ -24,7 +24,7 @@ get_config_values() {
       [hostname]="192.168.0.1:8002"
       [interval]="60"
   )
-  
+
   # Read /etc/7linden/cp-login.conf
   while read line
   do
@@ -37,7 +37,7 @@ get_config_values() {
 }
 
 am_at_home() {
-  /usr/bin/ssh-keyscan -T1 "$CP_HOST" 2> /dev/null | sort | diff /opt/7linden-cp-login/data/host_keys -
+  /opt/7linden-at-home/bin/7linden-at-home
 }
 
 
