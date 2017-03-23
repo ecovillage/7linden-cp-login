@@ -6,9 +6,7 @@
 
 set -e
 
-readonly CP_HOST="192.168.0.1"
-
-am_at_home() {
+am_at_home2() {
   if [ -e /etc/resolv.conf ] && \
   [ $(grep "^search" /etc/resolv.conf | cut -d ' ' -f2) = "7l" ] 2>/dev/null; then
     return 0
@@ -37,6 +35,11 @@ get_config_values() {
       fi
   done < /etc/7linden/cp-login.conf
 }
+
+am_at_home() {
+  /usr/bin/ssh-keyscan -T1 "$CP_HOST" 2> /dev/null | sort | diff /opt/7linden-cp-login/data/host_keys -
+}
+
 
 # Post login data to CP, config given as argument
 post_login() {
